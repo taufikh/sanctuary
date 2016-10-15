@@ -4,6 +4,8 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
+repo.set_fake(true);
+
 app.use(express.static('bower_components'));
 app.use(express.static('public'));
 app.get('/', function(req, res){
