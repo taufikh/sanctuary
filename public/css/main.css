@@ -1,15 +1,16 @@
 /**
  * @group Outer container.
  */
-#page-wrapper {
+#page-wrapper, body {
     height: 100vh;
+    overflow: hidden;
 }
 
 /**
  * @group Main map.
  */
 #the-map {
-    min-height: 75%;
+    min-height: 100%;
 }
 
 
@@ -18,8 +19,52 @@
  */
 #page-wrapper .form-horizontal {
     padding: 0 15px;
+    position: absolute;
+    bottom: -200px;
+    left: 0;
+    z-index: 99999;
+    background: #fff;
+    transition: 0.5s;
+    padding: 1vh 4vh;
 }
 
+#page-wrapper .form-horizontal.visible {
+    bottom: 0;
+}
+
+#show-form {
+    position: absolute;
+    bottom: 3vh;
+    right: 3vh;
+    z-index: 99999;
+
+    display: inline-block;
+    text-align: center;
+    color: #fff;
+    font-size: 3.6vh;
+    width: 9vh;
+    height: 9vh;
+    line-height: 9vh;
+
+    -webkit-tap-highlight-color: transparent;
+    vertical-align: middle;
+    will-change: opacity, transform;
+    transition: all .3s ease-out;
+    border: none;
+
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+
+    background-color: #F44336 !important;
+
+    border-radius: 50%;
+    font-weight: bold;
+
+    text-decoration: none;
+}
+
+#show-form.high{
+    bottom:180px;
+}
 /**
  * @group Diagnostics.
  */
