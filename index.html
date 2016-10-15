@@ -18,12 +18,18 @@
                 <div class="form-group">
                     <label for="input-have" class="control-label">I have</label>
                     <div class="input-group">
-                        <input type="text"
+                        <input list="haves"
                             class="form-control"
                             id="input-have"
                             name="i_have"
-                            placeholder="(What supplies do you have?)"
+                            placeholder="water, food, flashlights, candles"
                         />
+                        <datalist id="haves">
+                            <option value="water" />
+                            <option value="food" />
+                            <option value="flashlight" />
+                            <option value="batteries" />
+                        </datalist>
                         <span class="input-group-btn">
                             <button type="button" class="btn btn-success">Send</button>
                         </span>
@@ -32,15 +38,21 @@
                 <div class="form-group">
                     <label for="input-need" class="control-label">I need</label>
                     <div class="input-group">
-                        <input type="text"
+                        <input list="needs"
                             class="form-control"
                             id="input-need"
                             name="i_need"
-                            placeholder="(What supplies do you need?)"
+                            placeholder="water, food, flashlights, candles"
                         />
                         <span class="input-group-btn">
                             <button type="button" class="btn btn-success">Send</button>
                         </span>
+                        <datalist id="needs">
+                            <option value="water" />
+                            <option value="food" />
+                            <option value="flashlight" />
+                            <option value="batteries" />
+                        </datalist>
                     </div>
                 </div>
             </form>
