@@ -32,6 +32,9 @@ var S5S_SOCKET = (function () {
 
     var init = function () {
         socket = io();
+        socket.on('update_user', function (data) {
+            S5S_MAP.updateMarker(data);
+        })
     };
 
     return {

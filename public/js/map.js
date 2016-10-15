@@ -48,6 +48,13 @@ var S5S_MAP = (function () {
     var my_marker;
 
     /**
+     * Nearby people.
+     *
+     * @type {Object}
+     */
+    var neighbor_markers = {};
+
+    /**
      * Updates the main map.
      *
      * @param {Position} pos
@@ -57,6 +64,21 @@ var S5S_MAP = (function () {
         panMap(new_latlng);
         my_marker.setLatLng(new_latlng);
 
+    };
+
+    /**
+     * Collect and move markers for neighboring users.
+     *
+     * @param {Object} data
+     */
+    var updateMarker = function (data) {
+        var this_neighbor = neighbor_markers[data['id']];
+        if (undefined === this_neighbor) {
+            this_neighbor = L.marker(data.latlng).addTo(map);
+        } else {
+            this_neighbor.setLatLng(data.latlng);
+        }
+        neighbor_markers[data['id']] = this_neighbor;
     };
 
     /**
@@ -115,6 +137,7 @@ var S5S_MAP = (function () {
     };
 
     return {
+        'updateMarker': updateMarker,
         'init': init
     };
 
