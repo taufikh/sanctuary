@@ -11,6 +11,7 @@ app.get('/', function(req, res){
 
 var location_by_id = {};
 var ids_by_location = {};
+var state_by_id = {};
 
 io.on('connection', function(socket) {
     console.log('user connected');
@@ -25,12 +26,12 @@ io.on('connection', function(socket) {
             io.to(socket.id).emit('error', 'malformed update_user');
         }
         else {
-            update_msg = {id: socket.id, lat: msg.lat, long: msg.long};
+            msg.id = socket.id;
             neighbors = get_neighbors(socket.id, msg);
             console.log('neighbors', neighbors);
-            neighbors.reduce((acc, x) =>{
+            neighbors.reduce((acc, x) => {
                 console.log('emitting to',x);
-                io.to(x).emit('update_user', update_msg);
+                io.to(x).emit('update_user', msg);
             }, []);
             update(socket.id, msg);
         }
@@ -48,25 +49,28 @@ function get_neighbors(id, new_loc) {
 }
 
 function remove(id) {
-    location = location_by_id[id];
+    var location = location_by_id[id];
     if (location) {
-        key = lkey(location);
+        var key = lkey(location);
         ids_by_location[key] = ids_by_location[key].filter(x => x != id);
         delete location_by_id[id];
     }
 }
 
-function update(id, location) {
-    old_loc = location_by_id[id];
+function update(id, state) {
+    var old_loc = location_by_id[id];
+    // remove
     if (old_loc) {
-        key = lkey(old_loc);
+        var key = lkey(old_loc);
         ids_by_location[key] = ids_by_location[key].filter(x => x != id);
-
-        location_by_id[id] = location;
-
-        key = lkey(location);
-        ids_by_location[key] = (ids_by_location[key] || []).concat(id);
     }
+
+    // replace / set
+    location_by_id[id] = {lat: state.lat, long: state.long};
+    state_by_id[id] = state;
+
+    var key = lkey(state);
+    ids_by_location[key] = (ids_by_location[key] || []).concat(id);
 }
 
 function lkey(location) {
