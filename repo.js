@@ -3,15 +3,15 @@
     var ids_by_location = {};
     var state_by_id = {};
     var fake_neighbors = [
-        [40.698773, -73.974475], // new lab
-        [40.697967, -73.977104], // across
-        [40.697162, -73.976803], // back
-        [40.697788, -73.975076], // near
-        [40.698569, -73.981685], // nassau
-        [40.698098, -73.983273], // gold street
-        [40.700131, -73.983144], // upper gold street
-        [40.697984, -73.984217], // duffer street
-        [40.697284, -73.984238], // lower duffer
+        {id: 1,latlng: [40.698773, -73.974475], qty: 1, i_have: 'water, food', i_need: ''}, // new lab
+        {id: 2,latlng: [40.697967, -73.977104], qty: 2, i_have: 'water, food', i_need: ''}, // across
+        {id: 3,latlng: [40.697162, -73.976803], qty: 1, i_have: 'water, food', i_need: ''}, // back
+        {id: 4,latlng: [40.697788, -73.975076], qty: 5, i_have: 'water, food', i_need: ''}, // near
+        {id: 5,latlng: [40.698569, -73.981685], qty: 1, i_have: 'water, food', i_need: ''}, // nassau
+        {id: 6,latlng: [40.698098, -73.983273], qty: 1, i_have: 'water, food', i_need: ''}, // gold street
+        {id: 7,latlng: [40.700131, -73.983144], qty: 3, i_have: 'water', i_need: 'food'}, // upper gold street
+        {id: 8,latlng: [40.697984, -73.984217], qty: 1, i_have: 'water', i_need: 'food'}, // duffer street
+        {id: 9,latlng: [40.697284, -73.984238], qty: 2, i_have: 'water', i_need: 'food'}, // lower duffer
     ];
     var should_fake = false;
 
@@ -40,20 +40,10 @@
     module.exports.get_neighbors_data = (id) => {
         // lets fake it like there are some neighbors with information
         // and all
-        if (should_fake){
-            var id = 123;
-            return fake_neighbors.map(x=>{
-                return {
-                    latlng: x,
-                    i_have: 'popsicles',
-                    i_need: 'milk',
-                    id: id++
-                };
-            });
-        }
-        else{
+        if (should_fake)
+            return fake_neighbors;
+        else
             return Object.keys(state_by_id).map(x => state_by_id[x]);
-        }
     }
 
     module.exports.remove = (id) => {
