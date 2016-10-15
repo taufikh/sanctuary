@@ -17,21 +17,21 @@ io.on('connection', function(socket) {
         console.log('user disconnected');
         repo.remove(socket.id);
     });
-    socket.on('update_user', function(msg){
-        console.log('update_user', msg);
-        if (!msg.lat || !msg.long) {
-            console.log('malformed update_user', msg);
+    socket.on('update_user', function(user) {
+        console.log('update_user', user);
+        if (!user.lat || !user.long) {
+            console.log('malformed update_user', user);
             io.to(socket.id).emit('error', 'malformed update_user');
         }
         else {
-            msg.id = socket.id;
-            neighbors = repo.get_neighbors(socket.id, msg);
+            user.id = socket.id;
+            neighbors = repo.get_neighbors(socket.id, user);
             console.log('neighbors', neighbors);
             neighbors.reduce((acc, x) => {
                 console.log('emitting to',x);
-                io.to(x).emit('update_user', msg);
+                io.to(x).emit('update_user', user);
             }, []);
-            repo.update(socket.id, msg);
+            repo.update(user);
         }
     });
 });
