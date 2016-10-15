@@ -1,3 +1,6 @@
+# Editor temp files
+*.swp
+
 # Logs
 logs
 *.log
@@ -30,6 +33,7 @@ build/Release
 # Dependency directories
 node_modules
 jspm_packages
+bower_components
 
 # Optional npm cache directory
 .npm

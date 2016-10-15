@@ -1,0 +1,22 @@
+{
+  "name": "s5s-sanctuary",
+  "description": "Disaster coordination and response from the bottom up.",
+  "main": "index.js",
+  "authors": [
+    "Recurse Center"
+  ],
+  "license": "GPL-3",
+  "homepage": "https://github.com/omnibs/s5s-sanctuary",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "leaflet": "^1.0.1"
+  }
+}
