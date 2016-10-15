@@ -17,6 +17,24 @@ var S5S_MAP = (function () {
     var map;
 
     /**
+     * Updates the main map.
+     *
+     * @param {Position} pos
+     */
+    var updateMapPosition = function (pos) {
+        panMap([pos.coords.latitude, pos.coords.longitude]);
+    };
+
+    /**
+     * Recenters the map on the given coordinates.
+     *
+     * @param {Array} to
+     */
+    var panMap = function (to) {
+        map.setView(to, map.getZoom(), {'animation': true});
+    };
+
+    /**
      * Do the thing!
      */
     var init = function () {
@@ -25,11 +43,21 @@ var S5S_MAP = (function () {
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             'maxZoom': 19
         }).addTo(map);
+        map.dragging.disable();
+
+        var watch_id = navigator.geolocation.watchPosition(
+                updateMapPosition,
+                function () {
+                    console.log('Could not get current location.');
+                },
+                { 'timeout': 5000 }
+            )
     };
 
     return {
         'init': init
     };
+
 })();
 
 S5S_MAP.init();
