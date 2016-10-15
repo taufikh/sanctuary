@@ -10,20 +10,20 @@ var THIS_POSITION = 0;
 var TEST_POSITIONS = [
     {
         'coords': {
-            'latitude': 40.720653,
-                'longitude': -74.0031909
+            'latitude': 40.699146,
+            'longitude': -73.977302
         }
     },
     {
         'coords': {
-            'latitude': 40.6892534,
-            'longitude': -74.0466891
+            'latitude': 40.699682,
+            'longitude': -73.979565
         }
     },
     {
         'coords': {
-            'latitude': 40.6998871,
-            'longitude': -73.9771145
+            'latitude': 40.699723,
+            'longitude': -73.982945
         }
     }
 ];
@@ -142,7 +142,7 @@ var S5S_MAP = (function () {
      * @callback
      */
     var init = function (socket) {
-        map = L.map('the-map').setView([40.6998871, -73.9771145], 13); // lat,lng of the Brooklyn Navy Yard
+        map = L.map('the-map').setView([40.6998871, -73.9771145], 16); // lat,lng of the Brooklyn Navy Yard
         map.attributionControl.setPrefix('');
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             'maxZoom': 19
