@@ -3,15 +3,23 @@
     var ids_by_location = {};
     var state_by_id = {};
 
+    module.exports.clear = () => {
+        // clean up
+        location_by_id = {};
+        ids_by_location = {};
+        state_by_id = {};
+    }
     // fake get_neighbors
     // actual logic: get previous neighbors, get new neighbors, return union
     module.exports.get_neighbors = (id, new_loc) => {
+        // one day maybe filter neighbors by proximity:
         return location_by_id[id]
             ? Object.keys(location_by_id)
             : Object.keys(location_by_id).concat(id);
     }
 
-    module.exports.get_neighors_data = (loc) => {
+    module.exports.get_neighbors_data = (id) => {
+        // one day maybe filter neighbors by proximity:
         return Object.keys(state_by_id).map(x => state_by_id[x]);
     }
 
@@ -21,6 +29,7 @@
             var key = lkey(location);
             ids_by_location[key] = ids_by_location[key].filter(x => x != id);
             delete location_by_id[id];
+            delete state_by_id[id];
         }
     }
 
@@ -33,14 +42,14 @@
         }
 
         // replace / set
-        location_by_id[state.id] = {lat: state.lat, long: state.long};
+        location_by_id[state.id] = state.latlng;
         state_by_id[state.id] = state;
 
-        var key = lkey(state);
+        var key = lkey(state.latlng);
         ids_by_location[key] = (ids_by_location[key] || []).concat(state.id);
     }
 
     function lkey(location) {
-        return location.lat.toString() + 'x' + location.long.toString();
+        return location.join('x');
     }
 })();

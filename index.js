@@ -19,7 +19,7 @@ io.on('connection', function(socket) {
     });
     socket.on('update_user', function(user) {
         console.log('update_user', user);
-        if (!user.lat || !user.long) {
+        if (!user.latlng) {
             console.log('malformed update_user', user);
             io.to(socket.id).emit('error', 'malformed update_user');
         }
@@ -33,6 +33,10 @@ io.on('connection', function(socket) {
             }, []);
             repo.update(user);
         }
+    });
+    socket.on('get_neighbors', function(){
+        var neighbors = repo.get_neighbors_data(socket.id);
+        io.to(socket.id).emit('neighbors', neighbors);
     });
 });
 
