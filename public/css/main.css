@@ -12,6 +12,14 @@
     min-height: 75%;
 }
 
+
+/**
+ * @group Have/need form.
+ */
+#page-wrapper .form-horizontal {
+    padding: 0 15px;
+}
+
 /**
  * @group Diagnostics.
  */
