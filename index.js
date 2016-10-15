@@ -25,7 +25,7 @@ io.on('connection', function(socket) {
         }
         else {
             user.id = socket.id;
-            neighbors = repo.get_neighbors(socket.id, user);
+            neighbors = repo.get_neighbor_ids(socket.id, user);
             console.log('neighbors', neighbors);
             neighbors.reduce((acc, x) => {
                 console.log('emitting to',x);

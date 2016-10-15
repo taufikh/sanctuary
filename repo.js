@@ -2,6 +2,18 @@
     var location_by_id = {};
     var ids_by_location = {};
     var state_by_id = {};
+    var fake_neighbors = [
+        [40.698773, -73.974475], // new lab
+        [40.697967, -73.977104], // across
+        [40.697162, -73.976803], // back
+        [40.697788, -73.975076], // near
+        [40.698569, -73.981685], // nassau
+        [40.698098, -73.983273], // gold street
+        [40.700131, -73.983144], // upper gold street
+        [40.697984, -73.984217], // duffer street
+        [40.697284, -73.984238], // lower duffer
+    ];
+    var should_fake = false;
 
     module.exports.clear = () => {
         // clean up
@@ -9,18 +21,39 @@
         ids_by_location = {};
         state_by_id = {};
     }
+    module.exports.set_fake = (state) => {
+        should_fake = state;
+    };
     // fake get_neighbors
     // actual logic: get previous neighbors, get new neighbors, return union
-    module.exports.get_neighbors = (id, new_loc) => {
-        // one day maybe filter neighbors by proximity:
-        return location_by_id[id]
-            ? Object.keys(location_by_id)
-            : Object.keys(location_by_id).concat(id);
+    module.exports.get_neighbor_ids = (id, new_loc) => {
+        // lets fake it like there are no neighbors
+        // so we don't send updates to anyone
+        if (should_fake)
+            return [];
+        else
+            return location_by_id[id]
+                ? Object.keys(location_by_id)
+                : Object.keys(location_by_id).concat(id);
     }
 
     module.exports.get_neighbors_data = (id) => {
-        // one day maybe filter neighbors by proximity:
-        return Object.keys(state_by_id).map(x => state_by_id[x]);
+        // lets fake it like there are some neighbors with information
+        // and all
+        if (should_fake){
+            var id = 123;
+            return fake_neighbors.map(x=>{
+                return {
+                    latlng: x,
+                    i_have: 'popsicles',
+                    i_need: 'milk',
+                    id: id++
+                };
+            });
+        }
+        else{
+            return Object.keys(state_by_id).map(x => state_by_id[x]);
+        }
     }
 
     module.exports.remove = (id) => {
