@@ -88,10 +88,16 @@ var S5S_MAP = (function () {
     var updateNeighbor = function (neighbor) {
         var this_neighbor = neighbor_markers[neighbor['id']];
         if (undefined === this_neighbor) {
-            this_neighbor = L.marker(neighbor.latlng).addTo(map);
+            this_neighbor = L.marker(neighbor.latlng, {
+                'opacity': 0.6
+            }).addTo(map);
         } else {
             this_neighbor.setLatLng(neighbor.latlng);
         }
+        var t = document.getElementById('neighbor-popup');
+        var html = '<p>I have: ' + neighbor['i_have'] + '<br/> </p>' + t.innerHTML;
+        var popup = L.popup().setContent(html);
+        this_neighbor.bindPopup(popup);
         neighbor_markers[neighbor['id']] = this_neighbor;
     };
 
