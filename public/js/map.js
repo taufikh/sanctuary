@@ -63,7 +63,6 @@ var S5S_MAP = (function () {
         var new_latlng = [pos.coords.latitude, pos.coords.longitude];
         panMap(new_latlng);
         my_marker.setLatLng(new_latlng);
-
     };
 
     /**
@@ -79,6 +78,32 @@ var S5S_MAP = (function () {
             this_neighbor.setLatLng(data.latlng);
         }
         neighbor_markers[data['id']] = this_neighbor;
+    };
+
+    /**
+     * Updates the marker for a single neighbor.
+     *
+     * @type {Object}
+     */
+    var updateNeighbor = function (neighbor) {
+        var this_neighbor = neighbor_markers[neighbor['id']];
+        if (undefined === this_neighbor) {
+            this_neighbor = L.marker(neighbor.latlng).addTo(map);
+        } else {
+            this_neighbor.setLatLng(neighbor.latlng);
+        }
+        neighbor_markers[neighbor['id']] = this_neighbor;
+    };
+
+    /**
+     * Updates a block of neighbor data.
+     *
+     * @type {Array} data Of neihgbor objects.
+     */
+    var updateNeighbors = function (data) {
+        data.forEach(function (neighbor) {
+            updateNeighbor(neighbor);
+        });
     };
 
     /**
@@ -138,6 +163,7 @@ var S5S_MAP = (function () {
 
     return {
         'updateMarker': updateMarker,
+        'updateNeighbors': updateNeighbors,
         'init': init
     };
 

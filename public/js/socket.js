@@ -28,13 +28,22 @@ var S5S_SOCKET = (function () {
                 ]
             }
         );
+        getNeighbors();
+    };
+
+    var getNeighbors = function () {
+        socket.emit('get_neighbors');
     };
 
     var init = function () {
         socket = io();
+        getNeighbors();
         socket.on('update_user', function (data) {
             S5S_MAP.updateMarker(data);
         })
+        socket.on('neighbors', function (data) {
+            S5S_MAP.updateNeighbors(data);
+        });
     };
 
     return {
