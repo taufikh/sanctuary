@@ -30,7 +30,7 @@
         // lets fake it like there are no neighbors
         // so we don't send updates to anyone
         if (should_fake)
-            return [];
+            return Object.keys(location_by_id).filter(x => x != id);
         else
             return location_by_id[id]
                 ? Object.keys(location_by_id)
@@ -38,12 +38,14 @@
     }
 
     module.exports.get_neighbors_data = (id) => {
-        // lets fake it like there are some neighbors with information
-        // and all
+        var neighbors = Object.keys(state_by_id)
+            .map(x => state_by_id[x])
+            .filter(x => x.id != id);
+
         if (should_fake)
-            return fake_neighbors;
+            return fake_neighbors.concat(neighbors);
         else
-            return Object.keys(state_by_id).map(x => state_by_id[x]);
+            return neighbors;
     }
 
     module.exports.remove = (id) => {
