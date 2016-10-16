@@ -7,26 +7,30 @@
 // TODO: These test positions
 //       should be moved into a unit test?
 var THIS_POSITION = 0;
+
 var TEST_POSITIONS = [
-    {
-        'coords': {
-            'latitude': 40.699146,
-            'longitude': -73.977302
-        }
-    },
-    {
-        'coords': {
-            'latitude': 40.699682,
-            'longitude': -73.979565
-        }
-    },
-    {
-        'coords': {
-            'latitude': 40.699723,
-            'longitude': -73.982945
-        }
-    }
-];
+    {'coords': {'latitude': 40.698823, 'longitude': -73.976212}},
+    {'coords': {'latitude': 40.698732, 'longitude': -73.976453}},
+    {'coords': {'latitude': 40.698602, 'longitude': -73.976689}},
+    {'coords': {'latitude': 40.698696, 'longitude': -73.976877}},
+    {'coords': {'latitude': 40.698867, 'longitude': -73.977049}},
+    {'coords': {'latitude': 40.698867, 'longitude': -73.977049}},
+    {'coords': {'latitude': 40.698968, 'longitude': -73.977514}},
+    {'coords': {'latitude': 40.699078, 'longitude': -73.977965}},
+    {'coords': {'latitude': 40.699338, 'longitude': -73.978222}},
+    {'coords': {'latitude': 40.699582, 'longitude': -73.978479}},
+    {'coords': {'latitude': 40.699712, 'longitude': -73.978983}},
+    {'coords': {'latitude': 40.699720, 'longitude': -73.979498}},
+    {'coords': {'latitude': 40.699687, 'longitude': -73.979981}},
+    {'coords': {'latitude': 40.699768, 'longitude': -73.980560}},
+    {'coords': {'latitude': 40.699768, 'longitude': -73.981043}},
+    {'coords': {'latitude': 40.699817, 'longitude': -73.981687}},
+    {'coords': {'latitude': 40.699801, 'longitude': -73.982041}},
+    {'coords': {'latitude': 40.699817, 'longitude': -73.982374}},
+    {'coords': {'latitude': 40.699850, 'longitude': -73.982916}},
+    {'coords': {'latitude': 40.699862, 'longitude': -73.983318}},
+    {'coords': {'latitude': 40.699854, 'longitude': -73.983822}},
+    {'coords': {'latitude': 40.699854, 'longitude': -73.984289}}];
 
 /**
  * Module
@@ -132,7 +136,7 @@ var S5S_MAP = (function () {
         callback(TEST_POSITIONS[THIS_POSITION]);
 
         THIS_POSITION++;
-        if (THIS_POSITION > 2) {
+        if (THIS_POSITION > TEST_POSITIONS.length - 1) {
             THIS_POSITION = 0;
         }
     };
@@ -143,13 +147,14 @@ var S5S_MAP = (function () {
      * @callback
      */
     var init = function (socket) {
-        map = L.map('the-map').setView([40.6998871, -73.9771145], 16); // lat,lng of the Brooklyn Navy Yard
+        var start_pos = [TEST_POSITIONS[0].coords.latitude, TEST_POSITIONS[0].coords.longitude];
+        map = L.map('the-map').setView(start_pos, 16); // lat,lng of the Brooklyn Navy Yard
         map.attributionControl.setPrefix('');
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             'maxZoom': 19
         }).addTo(map);
         // Create a pin at the initial location
-        my_marker = L.marker([40.6998871, -73.9771145]).addTo(map);
+        my_marker = L.marker(start_pos).addTo(map);
 
         map.dragging.disable();
 
@@ -159,7 +164,7 @@ var S5S_MAP = (function () {
 //        var watch_id = navigator.geolocation.watchPosition(
         var interval_id = setInterval(
                 getNewPosition,
-                5000,
+                1000,
                 socket
 //                function () {
 //                    console.log('Could not get current location.');
