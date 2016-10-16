@@ -1,10 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <title>Coordinator View - S5S Sanctuary</title>
-</head>
-<body>
-    <p>TODO: Admin's view.</p>
-</body>
+    <head>
+        <meta charset="utf-8" />
+        <title>Coordinator View - S5S Sanctuary</title>
+        <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="/leaflet/dist/leaflet.css" />
+        <link rel="stylesheet" href="/css/admin.css" />
+    </head>
+    <body>
+        <section class="sidebar">
+            <header>
+                <h1>Sanctuary Coordinator</h1>
+            </header>
+            <nav>
+                <article>
+                    <h4>Summary</h4>
+                    <summary>
+                        <p><label>Incident:</label> Hurricane Sandy</p>
+                        <p><label>Elapsed:</label> 6h</p>
+                        <p><label>Online:</label>332,778 civilians<br/>492 first responders</p>
+                    </summary>
+                </article>
+                <hr></hr>
+                <article>
+                    <h4>View</h4>
+                    <menu class="view">
+                        <menuitem><a>realtime</a></menuitem>
+                        | <menuitem><a>10min</a></menuitem>
+                        | <menuitem><a>30min</a></menuitem>
+                        | <menuitem class="selected">1h</menuitem>
+                        | <menuitem><a>5h</a></menuitem>
+                        | <menuitem>24h</menuitem>
+                        | <menuitem>3d</menuitem>
+                        | <menuitem>1w</menuitem>
+                    </menu>
+                </article>
+                <hr></hr>
+                <article>
+                    <h4>Tools</h4>
+                    <menu class="tools">
+                        <menuitem class="glyphicon glyphicon-pencil"></menuitem>
+                        <menuitem class="glyphicon glyphicon-map-marker green"></menuitem>
+                        <menuitem class="glyphicon glyphicon-map-marker red"></menuitem>
+                        <menuitem class="glyphicon glyphicon-comment"></menuitem>
+                    </menu>
+                </article>
+                <hr></hr>
+            </nav>
+        </section>
+        <section class="map">
+            <div id="the-map">
+            </div>
+        </section>
+        <script src="/jquery/dist/jquery.min.js"></script>
+        <script src="/leaflet/dist/leaflet.js"></script>
+        <script src="/js/TileLayer.Grayscale.js"></script>
+        <script src="/js/adminmap.js"></script>
+    </body>
 </html>

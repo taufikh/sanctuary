@@ -34,7 +34,7 @@ var TEST_POSITIONS = [
 /**
  * Module
  */
-var S5S_MAP = (function () {
+var S5S_ADMINMAP = (function () {
 
     /**
      * Leaflet Map object itself
@@ -149,27 +149,13 @@ var S5S_MAP = (function () {
         var mbUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw';
 
         var start_pos = [TEST_POSITIONS[0].coords.latitude, TEST_POSITIONS[0].coords.longitude];
-        map = L.map('the-map').setView(start_pos, 16); // lat,lng of the Brooklyn Navy Yard
+        map = L.map('the-map', {zoomControl: false, layers: grayscale}).setView(start_pos, 16); // lat,lng of the Brooklyn Navy Yard
         map.attributionControl.setPrefix('');
         var grayscale   = L.tileLayer(mbUrl, {id: 'mapbox.light', 'maxZoom': 19}).addTo(map);
         // Create a pin at the initial location
-        my_marker = L.marker(start_pos).addTo(map);
+        // my_marker = L.marker(start_pos).addTo(map);
 
-        map.dragging.disable();
-
-        // TODO: This geolocation has been faked for
-        //       the demo. Use `.watchPosition()` for
-        //       using real (live) movement data.
-//        var watch_id = navigator.geolocation.watchPosition(
-        var interval_id = setInterval(
-                getNewPosition,
-                2500,
-                socket
-//                function () {
-//                    console.log('Could not get current location.');
-//                },
-//                { 'timeout': 5000 }
-            );
+        // map.dragging.disable();
     };
 
     return {
@@ -180,4 +166,4 @@ var S5S_MAP = (function () {
 
 })();
 
-S5S_MAP.init(S5S_SOCKET.updateUser);
+S5S_ADMINMAP.init();

@@ -1,0 +1,46 @@
+* {
+    /*border: 1px solid blue;*/
+}
+body {
+    height: 100vh;
+    overflow: hidden;
+}
+
+#the-map {
+    min-height: 100%;
+}
+
+section.map { height: 100vh; }
+
+section.sidebar{
+    position: absolute;
+    width: 408px;
+    top:0;
+    left:0;
+    height: 100%;
+    z-index:1000;
+    background: white;
+}
+
+section.sidebar header {background: #C81D25; padding: 10px 10px;}
+section.sidebar h1 { text-align: center; padding: 10px 0 13px 0; margin: 0; background: white; border-radius: 2px 2px; box-shadow: 0 2px 4px rgba(0,0,0,0.2),0 -1px 0px rgba(0,0,0,0.02);}
+
+section.sidebar nav { padding: 5px 20px; }
+
+section.sidebar nav article {margin-top: 10px;}
+
+summary {font-size: 20px}
+
+menu.view {color: #aaa;}
+menu.view menuitem.selected {color: #000; font-weight: bold}
+
+menu.tools {font-size: 20px;}
+menu.tools menuitem {padding: 4px; opacity: 0.3;}
+menu.tools menuitem:nth-child(2) {color: #61c13c; opacity: 1}
+menu.tools menuitem:nth-child(3) { }
+
+hr {margin: 10px 0; border: 1px solid #eee;}
+
+label{ display: block; color: #aaa; font-weight: normal; margin-bottom: 0px; font-size: 14px;}
+
+menu {margin: 10px}
