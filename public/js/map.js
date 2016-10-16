@@ -88,8 +88,9 @@ var S5S_MAP = (function () {
     var updateNeighbor = function (neighbor) {
         var this_neighbor = neighbor_markers[neighbor['id']];
         if (undefined === this_neighbor) {
+            var myIcon = L.divIcon({className: 'glyphicon glyphicon-user neighbor-marker'});
             this_neighbor = L.marker(neighbor.latlng, {
-                'opacity': 0.6
+                icon : myIcon
             }).addTo(map);
         } else {
             this_neighbor.setLatLng(neighbor.latlng);

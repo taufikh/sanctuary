@@ -64,6 +64,14 @@
 #show-form.high{
     bottom:180px;
 }
+
+.neighbor-marker {
+    font-size: 24px;
+    color: #FF9100;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+
 /**
  * Alerts/flash notices.
  */
