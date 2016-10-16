@@ -3,13 +3,9 @@
     <head>
         <title>S5S Sanctuary</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-
         <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css" />
-
-        <link rel="stylesheet" href="/css/main.css" />
-
         <link rel="stylesheet" href="/leaflet/dist/leaflet.css" />
-        <script src="/leaflet/dist/leaflet.js"></script>
+        <link rel="stylesheet" href="/css/main.css" />
     </head>
     <body>
         <div id="page-wrapper">
@@ -59,8 +55,29 @@
                 </div>
             </form>
         </div>
+
+        <div id="found-you" class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <p>Emergency responders have received your location.</p>
+            <p><strong>Follow the green arrow to safety.</strong></p>
+        </div>
+        <template id="neighbor-popup">
+            <div>
+                <button class="btn btn-sm btn-default">
+                    Message
+                </button>
+                <button class="btn btn-sm btn-default">
+                    Call
+                </button>
+            </div>
+        </template>
+
         <script src="/socket.io/socket.io.js"></script>
         <script src="/jquery/dist/jquery.min.js"></script>
+        <script src="/leaflet/dist/leaflet.js"></script>
+        <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="/js/socket.js"></script>
         <script src="/js/map.js"></script>
         <script src="/js/form.js"></script>

@@ -11,6 +11,9 @@ app.use(express.static('public'));
 app.get('/', function(req, res){
     res.sendfile('index.html');
 });
+app.get('/admin', function(req, res){
+    res.sendfile('admin.html');
+});
 
 console.log(repo);
 io.on('connection', function(socket) {
