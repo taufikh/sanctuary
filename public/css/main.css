@@ -104,55 +104,63 @@
 /**
  * arrows
  */
-.arrow {
+.blinking-arrow {
     position: absolute;
     color: #61c13c;
     z-index:9999;
     font-size: 11vh;
-    animation: blinker 1s linear infinite;
     top: auto;
+
+    opacity: 0;
+    animation-delay: 2s, 3.5s;
+    animation-name: fadein, blinker;
+    animation-duration: 1.5s, 1.5s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1, infinite;
 }
 
 @keyframes blinker {
+  0% {opacity: 1;}
   50% { opacity: 0; }
+  100% {opacity: 1;}
 }
 
-.arrow.glyphicon-chevron-right{
+.blinking-arrow.glyphicon-chevron-right{
     top: calc(50% - 11vh);
     right: 2vh;
 }
-.arrow.glyphicon-chevron-left{
+.blinking-arrow.glyphicon-chevron-left{
     top: calc(50% - 11vh);
     left: 2vh;
 }
 
-.arrow.glyphicon-chevron-up{
+.blinking-arrow.glyphicon-chevron-up{
     top: 0;
     left: calc(50% - 5vh);
 }
-.arrow.glyphicon-chevron-down{
+.blinking-arrow.glyphicon-chevron-down{
     bottom: 0;
     left: calc(50% - 5vh);
 }
 
-.arrow.glyphicon-chevron-right.up{
+.blinking-arrow.glyphicon-chevron-right.up{
     top: 0;
     right: 2vh;
     transform: rotate(-45deg);
 }
-.arrow.glyphicon-chevron-left.up{
+.blinking-arrow.glyphicon-chevron-left.up{
     top: 0;
     left: 2vh;
     transform: rotate(45deg);
 }
 
-.arrow.glyphicon-chevron-left.down{
+.blinking-arrow.glyphicon-chevron-left.down{
     top: auto;
     bottom: 0;
     left: 2vh;
     transform: rotate(-45deg);
 }
-.arrow.glyphicon-chevron-right.down{
+.blinking-arrow.glyphicon-chevron-right.down{
     top:auto;
     bottom: 0;
     right: 2vh;
