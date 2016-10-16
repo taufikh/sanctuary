@@ -2,10 +2,18 @@
 <html>
     <head>
         <title>S5S Sanctuary</title>
+
+        <!-- WebApp things! -->
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="apple-mobile-web-app-title" content="Sanctuary (Emergency Evacuation)" />
+
         <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css" />
         <link rel="stylesheet" href="/leaflet/dist/leaflet.css" />
         <link rel="stylesheet" href="/css/main.css" />
+        <link rel="stylesheet" href="/css/install-webapp.css" />
     </head>
     <body>
         <div id="page-wrapper">
@@ -56,13 +64,17 @@
             </form>
         </div>
 
-        <div id="found-you" class="alert alert-success alert-dismissible" role="alert">
+        <div id="found-you"
+            class="alert alert-success alert-dismissible"
+            role="alert"
+        >
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
             <p>Emergency responders have received your location.</p>
             <p><strong>Follow the green arrow to safety.</strong></p>
         </div>
+
         <template id="neighbor-popup">
             <div>
                 <button class="btn btn-sm btn-default">
@@ -81,15 +93,6 @@
         <script src="/js/socket.js"></script>
         <script src="/js/map.js"></script>
         <script src="/js/form.js"></script>
-        <template id="neighbor-popup">
-        <div>
-            <button class="btn btn-sm btn-default">
-                Message
-            </button>
-            <button class="btn btn-sm btn-default">
-                Call
-            </button>
-        </div>
-        </template>
+        <script src="/js/install-webapp.js"></script>
     </body>
 </html>

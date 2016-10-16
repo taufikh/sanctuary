@@ -7,7 +7,6 @@
 // TODO: These test positions
 //       should be moved into a unit test?
 var THIS_POSITION = 0;
-
 var TEST_POSITIONS = [
     {'coords': {'latitude': 40.698823, 'longitude': -73.976212}},
     {'coords': {'latitude': 40.698732, 'longitude': -73.976453}},
@@ -164,7 +163,7 @@ var S5S_MAP = (function () {
 //        var watch_id = navigator.geolocation.watchPosition(
         var interval_id = setInterval(
                 getNewPosition,
-                1000,
+                2500,
                 socket
 //                function () {
 //                    console.log('Could not get current location.');
