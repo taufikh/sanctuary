@@ -3,13 +3,13 @@
     var ids_by_location = {};
     var state_by_id = {};
     var fake_neighbors = [
-        {id: 1,latlng: [40.698773, -73.974475], qty: 1, i_have: 'water, food', i_need: ''}, // new lab
+        {id: 1,latlng: [40.698773, -73.974475], qty: 1, i_have: 'a boat, food', i_need: ''}, // new lab
         {id: 2,latlng: [40.697967, -73.977104], qty: 2, i_have: 'water, food', i_need: ''}, // across
-        {id: 3,latlng: [40.697162, -73.976803], qty: 1, i_have: 'water, food', i_need: ''}, // back
+        {id: 3,latlng: [40.697162, -73.976803], qty: 1, i_have: 'a boat, food', i_need: ''}, // back
         {id: 4,latlng: [40.697788, -73.975076], qty: 5, i_have: 'water, food', i_need: ''}, // near
         {id: 5,latlng: [40.698569, -73.981685], qty: 1, i_have: 'water, food', i_need: ''}, // nassau
         {id: 6,latlng: [40.698098, -73.983273], qty: 1, i_have: 'water, food', i_need: ''}, // gold street
-        {id: 7,latlng: [40.700131, -73.983144], qty: 3, i_have: 'water', i_need: 'food'}, // upper gold street
+        {id: 7,latlng: [40.700131, -73.983144], qty: 3, i_have: 'water, a boat', i_need: 'food'}, // upper gold street
         {id: 8,latlng: [40.697984, -73.984217], qty: 1, i_have: 'water', i_need: 'food'}, // duffer street
         {id: 9,latlng: [40.697284, -73.984238], qty: 2, i_have: 'water', i_need: 'food'}, // lower duffer
     ];
