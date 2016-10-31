@@ -23,7 +23,7 @@ Sanctuary provides a common operating picture of disaster terrain to emergency r
 1. When a disaster strikes, the existing [Wireless Emergency Alert (WEA) system](https://www.fcc.gov/consumers/guides/wireless-emergency-alerts-wea) is engaged and transmits a shortened URL to a cloud-hosted Sanctuary instance.
 1. Civilians tap or click the URL to immediately open the Sanctuary mobile web interface. There is no app to install, ensuring the lightest possible load on the network.
 1. The Sanctuary (client) loads in the civilians' mobile web browser, detects their GPS coordinates, transmits these to the Sanctuary Coordinator (server), and downloads the GPS coordinates of the nearest "safe zone," which is displayed as a green arrow.
-1. The civilian moves in the direction of the green arrow. Civilians see the locations of other nearby civilians on their map, and instictually cluster together, forming larger and larger groups, simultaneously enabling "good Samaritan" behavior.
+1. The civilian moves in the direction of the green arrow. Civilians see the locations of other nearby civilians on their map, and have the option of clustering together, enabling "good Samaritan" behavior.
 1. At any time, a civilian can report their current needs, supplies, group size, and other pertinent information to the Sanctuary Coordinator with the tap of a button.
 
 Sanctuary Coordinators see a bird's-eye view of the disaster area and can "paint" regions of the affected area in "green" or "red" to denote safe or dangerous zones, respectively, as shown below:
